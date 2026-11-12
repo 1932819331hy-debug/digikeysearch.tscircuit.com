@@ -307,9 +307,11 @@ const matchesParameter = (
       const scale = Math.max(
         Math.abs(expectedNumber),
         Math.abs(actualNumber),
-        1,
       )
-      return Math.abs(expectedNumber - actualNumber) / scale < 0.001
+      return (
+        scale === 0 ||
+        Math.abs(expectedNumber - actualNumber) / scale < 0.001
+      )
     }
     return value.toLowerCase().includes(expected.toLowerCase())
   })
